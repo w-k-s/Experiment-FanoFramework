@@ -1,0 +1,20 @@
+TSimpleTemplateParserFactory = SimpleTemplateParserFactoryImpl.TSimpleTemplateParserFactory;
+TTemplateParserFactory = TemplateParserFactoryImpl.TTemplateParserFactory;
+TNullTemplateParserFactory = NullTemplateParserFactoryImpl.TNullTemplateParserFactory;
+
+TSimpleTemplateParser = SimpleTemplateParserImpl.TSimpleTemplateParser;
+TTemplateParser = TemplateParserImpl.TTemplateParser;
+TNullTemplateParser = NullTemplateParserImpl.TNullTemplateParser;
+
+TViewParameters = ViewParametersImpl.TViewParameters;
+TViewParametersFactory = ViewParametersFactoryImpl.TViewParametersFactory;
+TNullViewParameters = NullViewParametersImpl.TNullViewParameters;
+TNullViewParametersFactory = NullViewParametersFactoryImpl.TNullViewParametersFactory;
+
+TView = ViewImpl.TView;
+TCompositeView = CompositeViewImpl.TCompositeView;
+TTemplateView = TemplateViewImpl.TTemplateView;
+TNullView = NullViewImpl.TNullView;
+TNullViewFactory = NullViewFactoryImpl.TNullViewFactory;
+TViewPartial = ViewPartialImpl.TViewPartial;
+TViewPartialFactory = ViewPartialFactoryImpl.TViewPartialFactory;
