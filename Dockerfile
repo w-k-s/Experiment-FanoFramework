@@ -1,20 +1,21 @@
-FROM ubuntu
+FROM ubuntu as builder
 
 RUN apt-get update -y
 RUN apt-get install -y libcurl4-openssl-dev
 RUN apt-get install -y fpc
 RUN apt-get install -y apache2
-RUN a2enmod cgi
-COPY ./httpd.conf  /etc/apache2/sites-enabled/000-default.conf
-RUN service apache2 restart
 
 ARG BUILD_TYPE=prod
 ENV BUILD_TYPE=${BUILD_TYPE}
 
-COPY . .
+COPY . /var/www/app
+WORKDIR /var/www/app
 RUN bash ./build.sh
-COPY /public /var/www/app/public
 
-CMD /usr/sbin/apache2ctl -D FOREGROUND
+FROM actilis/httpd-cgi
 
-EXPOSE 80
+ENV HTTPD_ENABLE_CGI=true
+
+COPY ./httpd.conf  /etc/httpd/conf.d/000-default.conf
+
+COPY --from=builder /var/www/app /var/www/app
